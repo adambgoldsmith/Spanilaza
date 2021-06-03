@@ -1,0 +1,150 @@
+class HaberGame(QtWidgets.QWidget, Ui_HaberUI):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.enter_button.clicked.connect(self.onClickEnterButton)
+        self.return_button.clicked.connect(self.onClickReturnButton)
+        self.enter_button.setShortcut('Return')
+        self.es_phrase_label.setHidden(True)
+        self.en_phrase_label.setHidden(True)
+        self.player_score_counter.setHidden(True)
+        self.streak_label.setText('Streak: ' + str(self.player_score_counter.intValue()))
+        self.result_label.setHidden(True)
+        self.correct_answer_label.setHidden(True)
+        self.you_said_label.setHidden(True)
+        self.generateQuestion()
+
+    def onClickReturnButton(self):
+        menu = Menu()
+        stack_utility.addWidget(menu)
+        stack_utility.setCurrentIndex(stack_utility.currentIndex() + 1)
+
+    def onClickEnterButton(self):
+        if self.input_line.text().lower() == self.en_phrase_label.text() or self.input_line.text().lower() == self.en_phrase_label.text().lower():
+            self.player_score_counter.display(self.player_score_counter.intValue() + 1)
+            self.streak_label.setText('Streak: ' + str(self.player_score_counter.intValue()))
+
+            self.result_label.setText('Correct')
+            self.result_label.setStyleSheet('color: #42c728;')
+            self.result_label.setHidden(False)
+
+            self.correct_answer_label.setText('The correct answer was: \n' + self.en_phrase_label.text())
+            self.correct_answer_label.setHidden(False)
+
+            self.you_said_label.setHidden(True)
+
+            self.input_line.setText('')
+            self.input_line.setFocus()
+            self.generateQuestion()
+        else:
+            self.player_score_counter.display(0)
+            self.streak_label.setText('Streak: ' + str(self.player_score_counter.intValue()))
+            
+            self.result_label.setText('Incorrect')
+            self.result_label.setStyleSheet('color: #c72828;')
+            self.result_label.setHidden(False)
+
+            self.correct_answer_label.setText('The correct answer was: \n' + self.en_phrase_label.text())
+            self.correct_answer_label.setHidden(False)
+
+            self.you_said_label.setText('You said: \n' + self.input_line.text())
+            self.you_said_label.setHidden(False)
+
+            # Show streak
+
+            self.input_line.setText('')
+            self.input_line.setFocus()
+            self.generateQuestion()
+
+    def generateQuestion(self):
+        random_tense_choice = random.choice(tenses_list)
+        random_tense = random.choice(random_tense_choice)
+
+        random_secondary_choice = random.choice(secondary_verb_list)
+        random_secondary = random.choice(random_secondary_choice)
+
+        random_object = random.choice(object_list)
+
+        if random_secondary_choice == secondary_verb_list[0]:
+            es_phrase = random_object[0] + random_tense[0] + random_secondary[0]
+            en_phrase = random_tense[1] + random_secondary[1] + random_object[1]
+            if len(random_tense) == 3:
+                es_phrase =  random_tense[2] + es_phrase
+        elif random_secondary_choice == secondary_verb_list[1]:
+            es_phrase = random_tense[0] + random_secondary[0]
+            en_phrase = random_tense[1] + random_secondary[1]
+            if len(random_tense) == 3:
+                es_phrase =  random_tense[2] + es_phrase
+
+        self.prompt_label.setText(es_phrase)
+        self.es_phrase_label.setText(es_phrase)
+        self.en_phrase_label.setText(en_phrase)
+        
+        
+class Conj100PresentGame(QtWidgets.QWidget, Ui_Generic100UI):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.enter_button.clicked.connect(self.onClickEnterButton)
+        self.return_button.clicked.connect(self.onClickReturnButton)
+        self.enter_button.setShortcut('Return')
+        self.es_phrase_label.setHidden(True)
+        self.en_phrase_label.setHidden(True)
+        self.player_score_counter.setHidden(True)
+        self.streak_label.setText('Streak: ' + str(self.player_score_counter.intValue()))
+        self.result_label.setHidden(True)
+        self.correct_answer_label.setHidden(True)
+        self.you_said_label.setHidden(True)
+        self.generateQuestion()
+
+    def onClickReturnButton(self):
+        menu = Menu()
+        stack_utility.addWidget(menu)
+        stack_utility.setCurrentIndex(stack_utility.currentIndex() + 1)
+
+    def onClickEnterButton(self):
+        if self.input_line.text().lower() == self.en_phrase_label.text() or self.input_line.text().lower() == self.en_phrase_label.text().lower():
+            self.player_score_counter.display(self.player_score_counter.intValue() + 1)
+            self.streak_label.setText('Streak: ' + str(self.player_score_counter.intValue()))
+
+            self.result_label.setText('Correct')
+            self.result_label.setStyleSheet('color: #42c728;')
+            self.result_label.setHidden(False)
+
+            self.correct_answer_label.setText('The correct answer was: \n' + self.en_phrase_label.text())
+            self.correct_answer_label.setHidden(False)
+
+            self.you_said_label.setHidden(True)
+
+            self.input_line.setText('')
+            self.input_line.setFocus()
+            self.generateQuestion()
+        else:
+            self.player_score_counter.display(0)
+            self.streak_label.setText('Streak: ' + str(self.player_score_counter.intValue()))
+            
+            self.result_label.setText('Incorrect')
+            self.result_label.setStyleSheet('color: #c72828;')
+            self.result_label.setHidden(False)
+
+            self.correct_answer_label.setText('The correct answer was: \n' + self.en_phrase_label.text())
+            self.correct_answer_label.setHidden(False)
+
+            self.you_said_label.setText('You said: \n' + self.input_line.text())
+            self.you_said_label.setHidden(False)
+
+            # Show streak
+
+            self.input_line.setText('')
+            self.input_line.setFocus()
+            self.generateQuestion()
+
+    def generateQuestion(self):
+        random_conj = random.choice(present_100_list)
+
+        es_phrase = random_conj[0]
+        en_phrase = random_conj[1]
+
+        self.prompt_label.setText(es_phrase)
+        self.es_phrase_label.setText(es_phrase)
+        self.en_phrase_label.setText(en_phrase)
