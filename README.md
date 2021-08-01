@@ -19,6 +19,6 @@ Included modes:
 
 ![PorParaPhoto](https://user-images.githubusercontent.com/52685070/120587612-8705cd00-c3ea-11eb-99c1-affaf7ab0af2.PNG)
 
-New "EN to ES" and "Show verb" options:
+New "English to Español" and "Show verb" options:
 
 ![en2esupdate](https://user-images.githubusercontent.com/52685070/127787471-b25bca7d-2ea1-45c9-87bb-2f11d44c6bb1.PNG)
