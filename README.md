@@ -13,6 +13,7 @@ Included modes:
 ...and several more!
 
 2021-06-02 (Removed paths and build dist for debugging. Apologies!)
+
 2021-08-01 (Added English to Spanish translation practice option + option to show infinitive verb in both languages)
 
 ![HaberPhoto](https://user-images.githubusercontent.com/52685070/120587611-85d4a000-c3ea-11eb-9536-ca044265ac7c.PNG)
